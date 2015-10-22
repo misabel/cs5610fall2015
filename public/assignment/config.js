@@ -3,11 +3,11 @@
         .module("WhiteBoardApp", ["ngRoute"])
         .config(function($routeProvider){
             $routeProvider
-                .when("/", {
-                    templateUrl: "home.html"
+                .when("/home", {
+                    templateUrl: "home/home.view.html"
                 })
                 .otherwise({
-                    redirectTo: "/"
+                    redirectTo: "/home"
                 });
         });
 })();
