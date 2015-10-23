@@ -1,20 +1,29 @@
 (function(){
     angular
-        .module("WhiteBoardApp")
+        .module("FormBuilderApp")
         .factory("FormService", FormService);
 
     function FormService() {
 		var forms = [];
         var Guid = require('guid');
         
-        var createFormForUser = function(userid, form, callback){
+        var service = {
+            createFormForUser : createFormForUser,
+            findAllFormsForUser : findAllFormsForUser,
+            deleteFormById : deleteFormById,
+            updateFormById : updateFormById
+        };
+        
+        function createFormForUser(userid, form, callback){
             form.id = Guid.create();
             form.userid = userid;
             forms.push(form);
             callback(form);
+            
+            return form;
         };
         
-        var findAllFormsForUser = function (userid, callback){
+        function findAllFormsForUser(userid, callback){
             var found = [];
             
             for(var form in forms){
@@ -24,9 +33,11 @@
             }
             
             callback(found);
+            
+            return found;
         };
         
-        var deleteFormById = function(id, callback) {
+        function deleteFormById(id, callback) {
             for(var i = 0; i < forms.length; i++){
 				if(forms[i].id == id){
 					forms.splice(i, 1);
@@ -34,9 +45,11 @@
 				}
 			}
 			callback(forms);
+            
+            return forms;
         };
         
-        var updateFormById = function (id, form, callback){
+        function updateFormById(id, form, callback){
             for(var i = 0; forms.length; i++){
 				if(forms[i].id == id){
 					forms[i] = form;
@@ -44,7 +57,11 @@
 					break;
 				}
 			}
+            
+            return form;
         };
+        
+        return service;
 		
     };
 })();

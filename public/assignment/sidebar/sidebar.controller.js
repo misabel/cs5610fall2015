@@ -1,6 +1,6 @@
 (function(){
     angular
-        .module("WhiteBoardApp", ["ngRoute"])
+        .module("FormBuilderApp", ["ngRoute"])
         .controller("SidebarController", SidebarController);
         
         function SidebarController($scope, $location){
