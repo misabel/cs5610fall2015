@@ -9,7 +9,8 @@
         $scope.register = function(){
             
             var user = {password: $scope.password,
-                        username: $scope.username
+                        username: $scope.username,
+                        email:$scope.email
                         };
             $rootScope.user = UserService.createUser(user);
             

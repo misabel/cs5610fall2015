@@ -14,6 +14,10 @@
                     templateUrl: "register/register.view.html",
                     conroller: "RegisterController"
                 })
+                .when("/profile", {
+                    templateUrl: "profile/profile.view.html",
+                    conroller: "ProfileController"
+                })
                 .otherwise({
                     redirectTo: "/home"
                 });
