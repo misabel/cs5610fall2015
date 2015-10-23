@@ -8,8 +8,8 @@
         
         $scope.user = $rootScope.user;
         
-        $scope.register = function(){
-            UserService.updateUser($scope.user.id, $scope.user)
+        $scope.update = function(){
+            UserService.updateUser(id, $scope.user);
         }
     }
 })();
