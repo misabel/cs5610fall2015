@@ -15,10 +15,11 @@
         };
         
         function createFormForUser(userid, form, callback){
-            form.id = guid();
-            form.userid = userid;
-            forms.push(form);
-            callback(form);
+            var newForm = angular.copy(form);
+            newForm.id = guid();
+            newForm.userid = userid;
+            forms.push(newForm);
+            // callback(form);
             
             return form;
         };
@@ -26,13 +27,13 @@
         function findAllFormsForUser(userid, callback){
             var found = [];
             
-            for(var form in forms){
-                if(form.userid == userid){
-                    found.push(form);
+            for(var i = 0; i < forms.length; i++){
+                if(forms[i].userid == userid){
+                    found.push(forms[i]);
                 }
             }
             
-            callback(found);
+            // callback(found);
             
             return found;
         };
@@ -44,7 +45,7 @@
 					break;
 				}
 			}
-			callback(forms);
+			// callback(forms);
             
             return forms;
         };
@@ -52,8 +53,8 @@
         function updateFormById(id, form, callback){
             for(var i = 0; forms.length; i++){
 				if(forms[i].id == id){
-					forms[i] = form;
-					callback(form);
+					forms[i] = angular.copy(form);
+					// callback(form);
 					break;
 				}
 			}
@@ -68,10 +69,6 @@
             }
             return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
                 s4() + '-' + s4() + s4() + s4();
-        }
-        
-        function getForms() {
-            return forms;
         }
         
         return service;
