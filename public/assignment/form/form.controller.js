@@ -14,10 +14,16 @@
             }
             
             $scope.updateForm = function(){
+                FormService.updateFormById($scope.currentForm.id, $scope.currentForm);
             }
             
             $scope.selectForm = function(index){
-                
+                $scope.currentForm = $scope.forms[index];
+            }
+            
+            $scope.deleteForm = function(index){
+                var form = $scope.forms[i];
+                FormService.deleteFormById(form.id);
             }
     
         };

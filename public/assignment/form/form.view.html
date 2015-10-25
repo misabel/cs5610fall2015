@@ -11,7 +11,7 @@
 				<th>Action</th>
 			</tr>
 			<tr>
-				<td><input ng-model="currentForm.formName" class="form-control" name="formName" placeholder="Name"/></td>
+				<td><input ng-model="currentForm.name" class="form-control" name="formName" placeholder="Name"/></td>
 				<td class="nowrap">
 					<a ng-click="addForm()" class="btn btn-primary">
 						<span class="glyphicon glyphicon-plus"></span>
@@ -23,7 +23,7 @@
 			</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="form in forms">
+				<tr ng-repeat="form in forms" ng-class="{'active' : form.name == currentForm.name}">
 					<td><a>{{form.name}} </a></td>
 					<td>
 						<a ng-click="deleteForm($index)" class="btn btn-danger">
