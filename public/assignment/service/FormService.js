@@ -1,11 +1,11 @@
 (function(){
+    "use strict";
     angular
         .module("FormBuilderApp")
         .factory("FormService", FormService);
 
     function FormService() {
 		var forms = [];
-        var Guid = require('guid');
         
         var service = {
             createFormForUser : createFormForUser,
@@ -15,7 +15,7 @@
         };
         
         function createFormForUser(userid, form, callback){
-            form.id = Guid.create();
+            form.id = guid();
             form.userid = userid;
             forms.push(form);
             callback(form);
@@ -60,6 +60,19 @@
             
             return form;
         };
+        function guid() {
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+            }
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                s4() + '-' + s4() + s4() + s4();
+        }
+        
+        function getForms() {
+            return forms;
+        }
         
         return service;
 		

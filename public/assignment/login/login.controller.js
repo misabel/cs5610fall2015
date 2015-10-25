@@ -1,11 +1,11 @@
 (function(){
+    "use strict";
     angular
-        .module("FormBuilderApp", ['UserService'])
+        .module("FormBuilderApp")
         .controller("LoginController", LoginController);
 
     function LoginController($scope,$location, $rootScope, UserService) {
         $scope.$location = $location;
-        
         $scope.login = function () {
             var user = UserService.findUserByUsernameAndPassword($scope.username, $scope.password);
             

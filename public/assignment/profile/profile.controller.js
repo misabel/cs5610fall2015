@@ -1,6 +1,7 @@
 (function(){
+    "use strict";
     angular
-        .module("FormBuilderApp", ['UserService'])
+        .module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
 
     function ProfileController($scope,$location, $rootScope, UserService) {

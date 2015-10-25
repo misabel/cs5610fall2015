@@ -1,11 +1,11 @@
 (function(){
+	"use strict";
     angular
         .module("FormBuilderApp")
         .factory("UserService", UserService);
 
     function UserService() {
 		var users = [];
-		var Guid = require('guid');
 		var service = {
 			findUserByUsernameAndPassword : findUserByUsernameAndPassword,
 			findAllUsers : findAllUsers,
@@ -33,7 +33,7 @@
 		
 		
 		function createUser(user, callback){
-			user.id = Guid.create();
+			user.id = guid();
 			users.push(user);
 			callback(user);
 			return user;
@@ -58,6 +58,16 @@
 				}
 			}
 		};
+		
+		function guid() {
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+            }
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                s4() + '-' + s4() + s4() + s4();
+        }
 		
 		return service;
 		

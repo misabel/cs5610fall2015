@@ -1,6 +1,7 @@
 (function(){
+    "use strict";
     angular
-        .module("FormBuilderApp", ["ngRoute"])
+        .module("FormBuilderApp")
         .controller("HeaderController", HeaderController);
         
         function HeaderController($scope, $location){
