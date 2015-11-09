@@ -5,9 +5,14 @@
 
     function CourseController($scope, ngDialog) {
 
-        $scope.createModule = function(){
+        $scope.addModule = function(){
             ngDialog.open({
                 template: "dialog/addModule.html"
+            });
+        }
+        $scope.addSection = function(){
+            ngDialog.open({
+                template:"dialog/addSection.html"
             });
         }
     }
