@@ -15,5 +15,11 @@
                 template:"dialog/addSection.html"
             });
         }
+        
+        $scope.addContent = function(){
+            ngDialog.open({
+                template:"dialog/addContent.html"
+            });
+        }
     }
 })();
