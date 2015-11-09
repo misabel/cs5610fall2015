@@ -1,5 +1,5 @@
 (function(){
     "use strict";
-    angular.module("AdminToolsApp", ["ngRoute"]);
+    angular.module("AdminToolsApp", ["ngRoute", "ngDialog"]);
     
 })();

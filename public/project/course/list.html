@@ -16,10 +16,10 @@
             <td>{{course.seats}}</td>
             <td>{{course.start | date}}</td>
             <td>
-                <!--<button ng-click="removeCourse($index)" class="btn btn-danger">
+                <button ng-click="removeCourse($index)" class="btn btn-danger">
                     Remove
-                </button>-->
-                <a href="#/courseEdit/{{$index}}" class="btn btn-primary">Edit</a>
+                </button>
+                <a href="#/courses/{{$index}}" class="btn btn-primary">Manage</a>
             </td>
         </tr>
     </tbody>

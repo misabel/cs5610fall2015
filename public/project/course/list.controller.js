@@ -1,9 +1,9 @@
 (function(){
     angular
         .module("AdminToolsApp")
-        .controller("CourseController", CourseController);
+        .controller("ListCourseController", ListCourseController);
 
-    function CourseController($scope, CourseService) {
+    function ListCourseController($scope, CourseService) {
 
         $scope.courses = CourseService.getAllCourses();
 
