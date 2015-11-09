@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AdminToolsApp">
+<head>
+    <meta charset="UTF-8">
+    
+    <!--Vendor StyleSheets-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!--Vendor Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+    
+    <!--Scripts-->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <!--<script src="MainController.js"></script>-->
+    <!--<script src="CourseController.js"></script>-->
+    <!--<script src="CourseEditController.js"></script>-->
+    <!--<script src="CourseService.js"></script>-->
+    
+    <!--Controllers-->
+    <script src="header/controller.js"></script>
+    <script src="sidebar/controller.js"></script>
+    <script src="course/list.controller.js"></script>
+    
+    <!--Services-->
+    <script src="service/CourseService.js"></script>
+    
+    <title> WhiteBoard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div ng-include="'header/view.html'"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <div ng-include="'sidebar/view.html'"></div>
+            </div>
+            <div class="col-sm-10" ng-view>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
