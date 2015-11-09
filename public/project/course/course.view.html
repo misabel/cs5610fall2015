@@ -37,4 +37,29 @@
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula, a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at ultricies metus viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.
 </p><br>
 
-<button ng-click="addContent()" class="ngdialog-button ngdialog-button-primary"> Add Content</button>
+<h2 class="clearfix"> 
+	<span class="pull-left"> Examples:</span>
+	<!--<div class="pull-right">
+		<button ng-click="addCode()"> Add Source Code </button>
+	</div>-->
+	<div class="dropdown pull-left">
+		<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			 Example 1
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li class="active"> <a>Example 1</a> </li>
+			<li> <a>Example 2</a> </li>
+		</ul>
+	</div>
+	<button ng-click="addCode()" class="btn btn-primary">
+		<span class="glyphicon glyphicon-plus"> </span>
+		 Code
+	</button>
+	<br>
+	<iframe src="../../assignment/home.html" style="margin-top:5px;border:1px solid #ddd;width:100%;height:300px;">
+	</iframe>
+	
+	
+</h2>
+<button ng-click="addContent()" class="btn btn-primary">Add Content</button>
