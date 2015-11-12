@@ -1,6 +1,6 @@
 var model = require("../models/user.model.js")();
 
-module.exports = function(app, db) {
+module.exports = function(app) {
 
     app.post("/api/assignment/user", createUser);
     app.get("/api/assignment/user", get);
@@ -15,8 +15,8 @@ module.exports = function(app, db) {
     }
 
     function get(req, res){
-        var username = res.query.username;
-        var password = res.query.password;
+        var username = req.query.username;
+        var password = req.query.password;
         if(!username && !password){
             res.json(model.findAll());
             return;

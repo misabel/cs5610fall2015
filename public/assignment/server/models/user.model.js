@@ -1,6 +1,6 @@
 var users = require("./user.mock.json");
 
-module.exports = function(app, db){
+module.exports = function(app){
 
     var api = {
 

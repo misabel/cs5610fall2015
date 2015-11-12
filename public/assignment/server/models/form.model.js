@@ -1,7 +1,7 @@
 var forms = require("./form.mock.json");
 var uuid = require("node-uuid");
 
-module.exports = function(app, db){
+module.exports = function(app){
 
     var api = {
 

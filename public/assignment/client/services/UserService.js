@@ -4,8 +4,7 @@
         .module("FormBuilderApp")
         .factory("UserService", UserService);
 
-    function UserService() {
-		var users = [];
+    function UserService($http) {
 		var service = {
 			findUserByUsernameAndPassword : findUserByUsernameAndPassword,
 			findAllUsers : findAllUsers,
@@ -13,6 +12,8 @@
 			deleteUserById : deleteUserById,
 			updateUser : updateUser
 		}
+
+		return service;
 		
 		function guid() {
             function s4() {
@@ -25,15 +26,20 @@
         }
 		
 		function findUserByUsernameAndPassword(username, password, callback){
-			
+
+			var deferred = $q.defer();
+			$http.post("/api/assignment/user?username=" + username + "&password=" + password)
+					.success(function(response){
+						deferred.resolve(response);
+					});
+			return deferred.promise;
 			for(var i = 0; i < users.length; i++){
 				if(users[i].username == username && users[i].password == password){
 					// callback(user);
 					return users[i];
 				}
 			}
-			
-			// callback(null);
+
 			return null;
 		};
 		
@@ -70,10 +76,6 @@
 				}
 			}
 		};
-		
-		
-		
-		return service;
 		
     };
 })();
