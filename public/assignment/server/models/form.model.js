@@ -1,4 +1,5 @@
 var forms = require("./form.mock.json");
+var uuid = require("node-uuid");
 
 module.exports = function(app, db){
 
@@ -9,13 +10,22 @@ module.exports = function(app, db){
         findById: findById,
         update: update,
         remove: remove,
-        findFormByTitle: findFormByTitle
+        findFormByTitle: findFormByTitle,
+        findFormByUserId: findFormByUserId,
+        findFieldsByFormId: findFieldsByFormId,
+        findFieldById: findFieldById,
+        removeField: removeField,
+        createField: createField,
+        updateField: updateField
 
     }
 
     return api;
 
-    function create(form) {
+    function create(userId, form) {
+
+        form.userId = userId;
+        form.id = uuid.v4();
         forms.push(form);
         return forms;
     }
@@ -28,6 +38,17 @@ module.exports = function(app, db){
         for(var i = 0; i < forms.length; i++) {
             var form = forms[i];
             if(form.id == id){
+                return form;
+            }
+        }
+
+        return null;
+    }
+
+    function findFormByUserId(userId){
+        for(var i = 0; i < forms.length; i++) {
+            var form = forms[i];
+            if(form.userId == userId){
                 return form;
             }
         }
@@ -62,5 +83,76 @@ module.exports = function(app, db){
         }
         return null;
     }
+
+    function findFieldsByFormId(id){
+        for(var i = 0; i < forms.length; i++) {
+            var form = forms[i];
+            if(form.id == id){
+                return form.fields;
+            }
+        }
+
+        return null;
+    }
+
+    function findFieldById(formId, fieldId){
+
+        for(var j = 0; j < forms.length; j++) {
+            if(forms[j].id == formId){
+                for (var i = 0; i < forms[j].fields.length; i++) {
+                    var field = forms[j].fields[i];
+                    if (field.id == fieldId) {
+                        return field;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    function removeField(formId, fieldId){
+
+        for(var j = 0; j < forms.length; j++) {
+            if(forms[j].id == formId){
+                for (var i = 0; i < forms[j].fields.length; i++) {
+                    if(forms[j].fields[i].id == fieldId){
+                        forms[j].fields.splice(i, 1);
+                        return forms[j].fields;
+                    }
+                }
+            }
+
+        }
+    }
+
+    function createField(formId, field){
+
+        field.id = uuid.v4();
+        for(var i = 0; i < forms.length; i++){
+            if(forms[i].id == formId){
+                forms[i].fields.push(field);
+                return forms[i].fields;
+            }
+        }
+    }
+
+    function updateField(formId, fieldId, field){
+
+        for(var j = 0; j < forms.length; j++) {
+            if(forms[j].id == formId){
+                for (var i = 0; i < forms[j].fields.length; i++) {
+                    if(forms[j].fields[i].id == fieldId){
+                        forms[j].fields[i] = field;
+                        return forms[j].fields;
+                    }
+                }
+            }
+
+        }
+    }
+
+
+
 
 }
