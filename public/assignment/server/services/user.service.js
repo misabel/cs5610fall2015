@@ -5,7 +5,6 @@ module.exports = function(app) {
     app.post("/api/assignment/user", createUser);
     app.get("/api/assignment/user", get);
     app.get("/api/assignment/user/:id", getUserById);
-    app.get("/api/assignment/user")
     app.put("/api/assignment/user/:id", updateUser);
     app.delete("/api/assignment/user/:id", deleteUser);
 
@@ -23,6 +22,7 @@ module.exports = function(app) {
         }
         else if(username && !password){
             res.json(model.findUserByUsername(username));
+            return;
         }
 
         else {

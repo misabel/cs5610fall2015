@@ -6,8 +6,6 @@
 
     function ProfileController($scope,$location, $rootScope, UserService) {
         
-       
-        
         $scope.update = function(){
             UserService.updateUser($rootScope.user.id, $rootScope.user);
         }

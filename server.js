@@ -1,9 +1,10 @@
 var express = require('express');
+var parser = require('body-parser');
 var app = express();
 
 
 app.use(express.static(__dirname + '/public'));
-
+app.use(parser());
 app.get('/', welcome);
 
 function welcome(req, res){

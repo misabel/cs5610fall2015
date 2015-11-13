@@ -1,5 +1,5 @@
 var users = require("./user.mock.json");
-
+var uuid = require("node-uuid");
 module.exports = function(app){
 
     var api = {
@@ -17,8 +17,9 @@ module.exports = function(app){
     return api;
 
     function create(user) {
+        user.id = uuid.v4();
         users.push(user);
-        return users;
+        return user;
     }
 
     function findAll() {
