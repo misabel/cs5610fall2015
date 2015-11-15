@@ -48,7 +48,7 @@
                 <a class="btn btn-warning">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </a>
-                <a class="btn btn-success">
+                <a ng-click="model.cloneField(field)" class="btn btn-success">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
                 <a ng-click="model.removeField(field.id)" class="btn btn-danger">
@@ -67,7 +67,6 @@
 <div class="row" id="newField">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <select ng-model="model.fieldType"class="form-control" type="text" name="field">
-            <option value="">Select Field</option>
             <option value="TEXT">Single Line Text</option>
             <option value="TEXTAREA">Multi Line Text</option>
             <option value="DATE">Date</option>
@@ -77,7 +76,7 @@
         </select>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
-        <a ng-hide="!model.fieldType"ng-click="model.addField(model.fieldType)" class="btn btn-success" >
+        <a ng-click="model.addField(model.fieldType)" class="btn btn-success" >
             <span class="glyphicon glyphicon-plus"></span>
         </a>
     </div>

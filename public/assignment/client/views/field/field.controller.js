@@ -5,6 +5,7 @@
         .controller("FieldController", FieldController);
     function FieldController($rootScope, $routeParams, FieldService){
         var model = this;
+        model.fieldType = "TEXT"; //default value
         var userId = $routeParams.userId;
         var formId = $routeParams.formId;
 
@@ -12,8 +13,6 @@
             model.fields = res;
         });
         model.addField = function(fieldType){
-
-            console.log(fieldType);
             var field = {
                 "id": null,
                 "type": fieldType,
@@ -53,7 +52,13 @@
                     ];
                     break;
             }
-            FieldService.createFieldForForm(formId,field).then(function(res){
+            FieldService.createFieldForForm(formId, field).then(function(res){
+                model.fields = res;
+            });
+        }
+
+        model.cloneField = function(field){
+            FieldService.createFieldForForm(formId, field).then(function(res){
                 model.fields = res;
             });
         }
