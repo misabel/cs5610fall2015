@@ -58,7 +58,7 @@
             });
         }
 
-        model.deleteField = function(fieldId){
+        model.removeField = function(fieldId){
             FieldService.deleteFieldFromForm(formId, fieldId).then(function(res){
                 model.fields = res;
             });
