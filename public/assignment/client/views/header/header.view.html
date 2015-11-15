@@ -11,10 +11,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-show="!loggedIn()" ng-class="getActive('/register')"><a href="#/register">Register</a></li>
-                <li ng-show="!loggedIn()" ng-class="getActive('/login')"><a href="#/login">Login</a></li>
+                <li ng-show="!model.loggedIn()" ng-class="model.getActive('/register')"><a href="#/register">Register</a></li>
+                <li ng-show="!model.loggedIn()" ng-class="model.getActive('/login')"><a href="#/login">Login</a></li>
                 <li><a href="#/home">Username</a></li>
-                <li ng-show="loggedIn()" ng-click="logout()"><a>Logout</a></li>
+                <li ng-show="model.loggedIn()" ng-click="model.logout()"><a>Logout</a></li>
             </ul>
         </div>
     </div>
