@@ -4,165 +4,81 @@
     <li class="active"><a href="form-fields.html">Fields</a></li>
 </ul>
 <form class="paddingTop25">
-    <label for="firstName"> First Name: </label>
-    <div class="row form-group" id="firstName">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <input class="form-control" placeholder="First Name">
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
-            <a href="#" class="btn btn-warning">
-                <scan class="glyphicon glyphicon-pencil"></scan>
-            </a>
-            <a href="#" class="btn btn-success">
-                <scan class="glyphicon glyphicon-plus"></scan>
-            </a>
-            <a href="#" class="btn btn-danger">
-                <scan class="glyphicon glyphicon-remove"></scan>
-            </a>
-            <a href="#" class="btn btn-primary">
-                <scan class="glyphicon glyphicon-align-justify"></scan>
-            </a>
+    <div ng-repeat="field in model.fields">
+        <label> {{field.label}} </label>
+        <div class="row form-group" ng-switch on="field.type">
+            <div ng-switch-when="TEXT" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <input class="form-control" placeholder="{{field.placeholder}}">
+            </div>
 
-        </div>
+            <div ng-switch-when="TEXTAREA" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <textarea class="form-control" placeholder="{{field.placeholder}}"></textarea>
+            </div>
 
-    </div>
+            <div ng-switch-when="EMAIL" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <input type="email" class="form-control" placeholder="{{field.placeholder}}"></input>
+            </div>
 
-    <label for="lastName"> Last Name: </label>
-    <div class="row form-group" id="lastName">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <input class="form-control" placeholder="Last Name">
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
-            <a href="#" class="btn btn-warning">
-                <scan class="glyphicon glyphicon-pencil"></scan>
-            </a>
-            <a href="#" class="btn btn-success">
-                <scan class="glyphicon glyphicon-plus"></scan>
-            </a>
-            <a href="#" class="btn btn-danger">
-                <scan class="glyphicon glyphicon-remove"></scan>
-            </a>
-            <a href="#" class="btn btn-primary">
-                <scan class="glyphicon glyphicon-align-justify"></scan>
-            </a>
+            <div ng-switch-when="DATE" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <input type="date" class="form-control" placeholder="{{field.placeholder}}">
+            </div>
 
-        </div>
+            <div ng-switch-when="OPTIONS" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <select class="form-control" type="text">
+                    <option ng-repeat="option in field.options" ng-value="option.value">{{option.label}}</option>
+                </select>
+            </div>
 
-    </div>
+            <div ng-switch-when="CHECKBOXES" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div ng-repeat="option in field.options">
+                    <label><input type="checkbox" ng-value="option.value">  {{option.label}}</label>
+                    <br>
+                </div>
 
-    <label for="dob"> Date of Birth: </label>
-    <div class="row form-group" id="dob">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <input type="date" class="form-control" placeholder="Select Date">
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
-            <a href="#" class="btn btn-warning">
-                <scan class="glyphicon glyphicon-pencil"></scan>
-            </a>
-            <a href="#" class="btn btn-success">
-                <scan class="glyphicon glyphicon-plus"></scan>
-            </a>
-            <a href="#" class="btn btn-danger">
-                <scan class="glyphicon glyphicon-remove"></scan>
-            </a>
-            <a href="#" class="btn btn-primary">
-                <scan class="glyphicon glyphicon-align-justify"></scan>
-            </a>
+            </div>
 
-        </div>
+            <div ng-switch-when="RADIOS" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div ng-repeat="option in field.options">
+                    <label><input type="radio" ng-value="option.value">  {{option.label}}</label>
+                    <br>
+                </div>
+            </div>
 
-    </div>
-
-    <label for="gender"> Gender: </label>
-    <div class="row form-group" id="gender">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <select class="form-control" type="text" name="gender">
-                <option value="">Select Gender</option>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-            </select>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
-            <a href="#" class="btn btn-warning">
-                <scan class="glyphicon glyphicon-pencil"></scan>
-            </a>
-            <a href="#" class="btn btn-success">
-                <scan class="glyphicon glyphicon-plus"></scan>
-            </a>
-            <a href="#" class="btn btn-danger">
-                <scan class="glyphicon glyphicon-remove"></scan>
-            </a>
-            <a href="#" class="btn btn-primary">
-                <scan class="glyphicon glyphicon-align-justify"></scan>
-            </a>
-
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+                <a class="btn btn-warning">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+                <a ng-click="model.removeField(field.id)" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+                <a class="btn btn-primary">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </a>
+            </div>
         </div>
     </div>
 
-    <label for="roles"> Roles: </label>
-    <div class="row form-group" id="roles">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <input type="checkbox"/> Admin </input> <br>
-            <input type="checkbox"/> Student </input> <br>
-            <input type="checkbox"/> User </input> <br>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
-            <a href="#" class="btn btn-warning">
-                <scan class="glyphicon glyphicon-pencil"></scan>
-            </a>
-            <a href="#" class="btn btn-success">
-                <scan class="glyphicon glyphicon-plus"></scan>
-            </a>
-            <a href="#" class="btn btn-danger">
-                <scan class="glyphicon glyphicon-remove"></scan>
-            </a>
-            <a href="#" class="btn btn-primary">
-                <scan class="glyphicon glyphicon-align-justify"></scan>
-            </a>
-
-        </div>
-    </div>
-
-    <label for="agreement"> License Agreement: </label>
-    <div class="row form-group" id="agreement">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <input type="radio"/> Yes </input> <br>
-            <input type="radio"/> No </input> <br>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
-            <a href="#" class="btn btn-warning">
-                <scan class="glyphicon glyphicon-pencil"></scan>
-            </a>
-            <a href="#" class="btn btn-success">
-                <scan class="glyphicon glyphicon-plus"></scan>
-            </a>
-            <a href="#" class="btn btn-danger">
-                <scan class="glyphicon glyphicon-remove"></scan>
-            </a>
-            <a href="#" class="btn btn-primary">
-                <scan class="glyphicon glyphicon-align-justify"></scan>
-            </a>
-
-        </div>
-    </div>
 </form>
 <hr class="divider">
 <label for="newField"> Add New Field: </label>
 <div class="row" id="newField">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <select ng-modelclass="form-control" type="text" name="field">
+        <select ng-model="model.fieldType"class="form-control" type="text" name="field">
             <option value="">Select Field</option>
-            <option value="single">Single Line Text</option>
-            <option value="date">Date</option>
-            <option value="dropdown">Dropdown</option>
-            <option value="checkboxes">Checkboxes</option>
-            <option value="radio">Radio</option>
-            <option value="paragraph">Paragraph Text Field</option>
+            <option value="TEXT">Single Line Text</option>
+            <option value="TEXTAREA">Multi Line Text</option>
+            <option value="DATE">Date</option>
+            <option value="OPTIONS">Dropdown</option>
+            <option value="CHECKBOXES">Checkboxes</option>
+            <option value="RADIOS">Radio Buttons</option>
         </select>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
-        <a href="#" class="btn btn-success">
-            <scan class="glyphicon glyphicon-plus"></scan>
+        <a ng-click="model.addField(model.fieldType)" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span>
         </a>
     </div>
 </div>

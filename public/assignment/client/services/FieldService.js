@@ -66,21 +66,6 @@
         }
 
 
-
-
-
-        //function createFormForUser(userId, form){
-        //    var newForm = angular.copy(form);
-        //    newForm.userId = userId;
-        //    var deferred = $q.defer();
-        //    $http.post("/api/assignment/user/" + userId + "/form", newForm)
-        //        .success(function(response){
-        //            deferred.resolve(response);
-        //        });
-        //    return deferred.promise;
-        //};
-
-
         return service;
 
     };

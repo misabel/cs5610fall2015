@@ -24,7 +24,7 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="form in model.forms" ng-class="{'active' : form.title == model.currentForm.title}">
-					<td><a>{{form.title}} </a></td>
+					<td><a ng-href="#/user/{{$root.user.id}}/form/{{form.id}}/fields">{{form.title}} </a></td>
 					<td>
 						<a ng-click="model.deleteForm($index)" class="btn btn-danger">
 							<span class="glyphicon glyphicon-remove"></span>

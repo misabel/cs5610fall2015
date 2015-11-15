@@ -26,6 +26,7 @@ module.exports = function(app){
 
         form.userId = userId;
         form.id = uuid.v4();
+        form.fields = [];
         forms.push(form);
         return findFormByUserId(userId);
     }
