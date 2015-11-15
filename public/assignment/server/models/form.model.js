@@ -27,7 +27,7 @@ module.exports = function(app){
         form.userId = userId;
         form.id = uuid.v4();
         forms.push(form);
-        return forms;
+        return findFormByUserId(userId);
     }
 
     function findAll() {
@@ -46,21 +46,22 @@ module.exports = function(app){
     }
 
     function findFormByUserId(userId){
+        var found = [];
         for(var i = 0; i < forms.length; i++) {
             var form = forms[i];
             if(form.userId == userId){
-                return form;
+                found.push(form);
             }
         }
 
-        return null;
+        return found;
     }
 
     function update(id, form){
         for(var i = 0; i < forms.length; i++) {
             if(forms[i].id == id) {
                 forms[i] = form;
-                return forms;
+                return;
             }
         }
     }
@@ -69,7 +70,7 @@ module.exports = function(app){
         for(var i = 0; i <  forms.length; i++){
             if(forms[i].id == id){
                 forms.splice(i, 1);
-                return forms;
+                return;
             }
         }
     }
@@ -108,7 +109,7 @@ module.exports = function(app){
             }
 
         }
-
+        return null;
     }
 
     function removeField(formId, fieldId){
