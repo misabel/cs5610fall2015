@@ -45,7 +45,7 @@ module.exports = function(app) {
     }
 
     function deleteUser(req, res){
-        var id = req.parmas.id;
+        var id = req.params.id;
 
         res.json(model.remove(id));
     }
