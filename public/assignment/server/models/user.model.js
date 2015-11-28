@@ -1,6 +1,6 @@
-var users = require("./user.mock.json");
+//var users = require("./user.mock.json");
 var q = require("q");
-var uuid = require("node-uuid");
+//var uuid = require("node-uuid");
 module.exports = function(mongoose, db){
 
     var UserSchema = require("./user.schema.js")(mongoose);
