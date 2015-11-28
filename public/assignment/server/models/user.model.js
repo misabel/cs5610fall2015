@@ -1,6 +1,17 @@
 var users = require("./user.mock.json");
 var uuid = require("node-uuid");
-module.exports = function(app){
+module.exports = function(app, mongoose, db){
+
+
+    var UserSchema = mongoose.Schema({
+        firstName: String,
+        lastName: String,
+        username: String,
+        password: String
+    }, {collection: "cs5610.assignment.user"});
+
+    var UserModel = mongoose.model("UserModel", UserSchema);
+
 
     var api = {
 

@@ -1,6 +1,6 @@
 var model = require("../models/form.model.js")();
 
-module.exports = function(app, mongoose, db){
+module.exports = function(app, model){
 
     app.get("/api/assignment/form/:formId/field", getFields);
     app.get("/api/assignment/form/:formId/field/:fieldId", getField);
