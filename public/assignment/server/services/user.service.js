@@ -1,6 +1,6 @@
 var model = require("../models/user.model.js")();
 
-module.exports = function(app) {
+module.exports = function(app, mongoose, db) {
 
     app.post("/api/assignment/user", createUser);
     app.get("/api/assignment/user", get);
