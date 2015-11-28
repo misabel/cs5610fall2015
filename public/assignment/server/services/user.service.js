@@ -2,6 +2,13 @@ var model = require("../models/user.model.js")();
 
 module.exports = function(app, mongoose, db) {
 
+    var UserSchema = mongoose.Schema({
+        firstName: String,
+        lastName: String,
+        username: String,
+        password: String
+    }, {collection: "cs5610.assignment.user"});
+
     app.post("/api/assignment/user", createUser);
     app.get("/api/assignment/user", get);
     app.get("/api/assignment/user/:id", getUserById);
