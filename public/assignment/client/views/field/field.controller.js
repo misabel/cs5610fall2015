@@ -58,7 +58,10 @@
         }
 
         model.cloneField = function(field){
-            FieldService.createFieldForForm(formId, field).then(function(res){
+
+            var clone = angular.copy(field);
+            delete clone._id;
+            FieldService.createFieldForForm(formId, clone).then(function(res){
                 model.fields = res;
             });
         }
