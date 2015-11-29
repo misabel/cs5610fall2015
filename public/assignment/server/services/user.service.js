@@ -1,4 +1,4 @@
-var model = require("../models/user.model.js")();
+//var model = require("../models/user.model.js")();
 
 module.exports = function(app, model) {
 
@@ -10,23 +10,30 @@ module.exports = function(app, model) {
 
     function createUser(req, res){
         var user = req.body;
-        res.json(model.create(user));
+
+        model.create(user).then(function(user){
+            res.json(user);
+        });
     }
 
     function get(req, res){
         var username = req.query.username;
         var password = req.query.password;
         if(!username && !password){
-            res.json(model.findAll());
-            return;
+            model.findAll().then(function(users){
+                res.json(users);
+            });
         }
         else if(username && !password){
-            res.json(model.findUserByUsername(username));
-            return;
+            model.findUserByUsername(username).then(function(user){
+                res.json(user);
+            });
         }
 
         else {
-            res.json(model.findUserByCredentials(req.query));
+            model.findUserByCredentials(req.query).then(function(user){
+                res.json(user);
+            });
         }
     }
 
@@ -34,20 +41,26 @@ module.exports = function(app, model) {
     function getUserById(req, res){
         var id = req.params.id;
 
-        res.json(model.findById(id));
+        model.findById(id).then(function(user){
+            res.json(user);
+        });
     }
 
     function updateUser(req, res){
         var id = req.params.id;
         var user = req.body;
 
-        res.json(model.update(id,user));
+        model.update(id,user).then(function(response){
+            res.json(response);
+        });
     }
 
     function deleteUser(req, res){
         var id = req.params.id;
 
-        res.json(model.remove(id));
+        model.remove(id).then(function(response){
+            res.json(response);
+        });
     }
 
 

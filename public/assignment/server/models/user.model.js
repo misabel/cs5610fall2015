@@ -25,8 +25,9 @@ module.exports = function(mongoose, db){
 
         var deferred = q.defer();
 
-        UserModel.create(user, function(err, users){
-            deferred.resolve(users);
+        UserModel.create(user, function(err, user){
+            console.log(user);
+            deferred.resolve(user);
         });
 
         return deferred.promise;
@@ -67,11 +68,8 @@ module.exports = function(mongoose, db){
 
         var deferred = q.defer();
 
-        UserModel.findById(id, function(err, foundUser){
-            foundUser = user;
-            foundUser.save(function(err, usr){
-                deferred.resolve(usr);
-            })
+        UserModel.update({_id: id}, user, function(err, user){
+            deferred.resolve(user);
         });
 
         return deferred.promise;

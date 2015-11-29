@@ -1,4 +1,4 @@
-var model = require("../models/form.model.js")();
+//var model = require("../models/form.model.js")();
 
 module.exports = function(app, model){
 
@@ -11,28 +11,36 @@ module.exports = function(app, model){
     function getFields(req, res){
         var id = req.params.formId;
 
-        res.json(model.findFieldsByFormId(id));
+        model.findFieldsByFormId(id).then(function(form){
+            res.json(form);
+        });
     }
 
     function getField(req, res){
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
 
-        res.json(model.findFieldById(formId, fieldId));
+        model.findFieldById(formId, fieldId).then(function(fields){
+            res.json(fields);
+        });
     }
 
     function deleteField(req, res){
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
 
-        res.json(model.removeField(formId, fieldId));
+        model.removeField(formId, fieldId).then(function(fields){
+            res.json(fields);
+        });
     }
 
     function createField(req, res){
         var formId = req.params.formId;
         var field = req.body;
 
-        res.json(model.createField(formId, field));
+        model.createField(formId, field).then(function(fields){
+            res.json(fields);
+        });
     }
 
     function updateField(req, res){
@@ -40,7 +48,9 @@ module.exports = function(app, model){
         var fieldId = req.params.fieldId;
         var field = req.body;
 
-        res.json(model.updateField(formId, fieldId, field));
+        model.updateField(formId, fieldId, field).then(function(fields){
+            res.json(fields);
+        });
     }
 
 

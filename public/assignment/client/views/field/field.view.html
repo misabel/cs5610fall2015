@@ -6,7 +6,7 @@
 <form class="paddingTop25">
     <div ng-repeat="field in model.fields">
         <label> {{field.label}} </label>
-        <div class="row form-group" ng-switch on="field.type">
+        <div class="row form-group" ng-switch on="field.fieldType">
             <div ng-switch-when="TEXT" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <input class="form-control" placeholder="{{field.placeholder}}">
             </div>
@@ -23,13 +23,13 @@
                 <input type="date" class="form-control" placeholder="{{field.placeholder}}">
             </div>
 
-            <div ng-switch-when="OPTIONS" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div ng-switch-when="SELECT" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <select class="form-control" type="text">
                     <option ng-repeat="option in field.options" ng-value="option.value">{{option.label}}</option>
                 </select>
             </div>
 
-            <div ng-switch-when="CHECKBOXES" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div ng-switch-when="CHECKBOX" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <div ng-repeat="option in field.options">
                     <label><input type="checkbox" ng-value="option.value">  {{option.label}}</label>
                     <br>
@@ -37,7 +37,7 @@
 
             </div>
 
-            <div ng-switch-when="RADIOS" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div ng-switch-when="RADIO" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <div ng-repeat="option in field.options">
                     <label><input type="radio" ng-value="option.value">  {{option.label}}</label>
                     <br>
@@ -51,7 +51,7 @@
                 <a ng-click="model.cloneField(field)" class="btn btn-success">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
-                <a ng-click="model.removeField(field.id)" class="btn btn-danger">
+                <a ng-click="model.removeField(field._id)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove"></span>
                 </a>
                 <a class="btn btn-primary">
@@ -70,9 +70,9 @@
             <option value="TEXT">Single Line Text</option>
             <option value="TEXTAREA">Multi Line Text</option>
             <option value="DATE">Date</option>
-            <option value="OPTIONS">Dropdown</option>
-            <option value="CHECKBOXES">Checkboxes</option>
-            <option value="RADIOS">Radio Buttons</option>
+            <option value="SELECT">Dropdown</option>
+            <option value="CHECKBOX">Checkboxes</option>
+            <option value="RADIO">Radio Buttons</option>
         </select>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">

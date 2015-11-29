@@ -5,21 +5,21 @@
         .controller("FormController", FormController);
         function FormController($rootScope, FormService){
             var model = this;
-             FormService.findAllFormsForUser($rootScope.user.id).then(function(res){
+             FormService.findAllFormsForUser($rootScope.user._id).then(function(res){
                  model.forms = res;
              });
             
             model.addForm = function (){
-                FormService.createFormForUser($rootScope.user.id, model.currentForm).then(function(res){
+                FormService.createFormForUser($rootScope.user._id, model.currentForm).then(function(res){
                     model.forms = res;
                 });
                 model.currentForm = {};
             }
 
             model.updateForm = function(){
-                FormService.updateFormById(model.currentForm.id, model.currentForm);
+                FormService.updateFormById(model.currentForm._id, model.currentForm);
                 model.currentForm = {};
-                FormService.findAllFormsForUser($rootScope.user.id).then(function(res){
+                FormService.findAllFormsForUser($rootScope.user._id).then(function(res){
                     model.forms = res;
                 });
             }
@@ -30,8 +30,8 @@
             
             model.deleteForm = function(index){
                 var form = model.forms[index];
-                FormService.deleteFormById(form.id);
-                FormService.findAllFormsForUser($rootScope.user.id).then(function(res){
+                FormService.deleteFormById(form._id);
+                FormService.findAllFormsForUser($rootScope.user._id).then(function(res){
                     model.forms = res;
                 });
 

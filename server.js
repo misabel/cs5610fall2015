@@ -12,7 +12,7 @@ function welcome(req, res){
 }
 
 
-var connectionString = 'mongodb://127.0.0.1:27017/cs5610';
+var connectionString = 'mongodb://127.0.0.1:27017/';
 
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 	connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +

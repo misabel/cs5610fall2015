@@ -1,4 +1,4 @@
-var model = require("../models/form.model.js")();
+//var model = require("../models/form.model.js")();
 
 module.exports = function(app, model){
 
@@ -11,37 +11,43 @@ module.exports = function(app, model){
     function getFormByUserId(req, res){
         var userId = req.params.userId;
 
-        res.json(model.findFormByUserId(userId));
+        model.findFormByUserId(userId).then(function(form){
+            res.json(form);
+        });
     }
 
     function getFormById(req, res){
         var id = req.params.formId;
 
-        res.json(model.findById(id));
+        model.findById(id).then(function(form){
+            res.json(form);
+        });
     }
 
     function deleteForm(req, res){
         var id = req.params.formId;
 
-        res.json(model.remove(id));
+        model.remove(id).then(function(response){
+            res.json(response);
+        });
     }
 
     function create(req, res){
         var userId = req.params.userId;
         var form = req.body;
 
-        res.json(model.create(userId, form));
+        model.create(userId, form).then(function(response){
+            res.json(response);
+        });
     }
 
     function update(req, res){
         var id = req.params.formId;
         var form = req.body;
 
-        res.json(model.update(id, form));
+        model.update(id,form).then(function(response){
+            res.json(response);
+        });
     }
-
-
-
-
 
 }

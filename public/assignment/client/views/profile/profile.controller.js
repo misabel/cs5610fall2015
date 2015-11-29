@@ -7,7 +7,7 @@
     function ProfileController($rootScope, UserService) {
         var model = this;
         model.update = function(){
-            UserService.updateUser($rootScope.user.id, $rootScope.user);
+            UserService.updateUser($rootScope.user._id, $rootScope.user);
         }
     }
 })();

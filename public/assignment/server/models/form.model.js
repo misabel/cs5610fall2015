@@ -230,8 +230,8 @@ module.exports = function(mongoose, db){
 
         FormModel.findById(formId, function(err, form){
             form.fields.push(field);
-            form.save(function(err, form){
-                deferred.resolve(form.fields);
+            form.save(function(err, saved){
+                deferred.resolve(saved.fields);
             });
         });
         return deferred.promise;

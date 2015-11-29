@@ -14,8 +14,7 @@
         });
         model.addField = function(fieldType){
             var field = {
-                "id": null,
-                "type": fieldType,
+                "fieldType": fieldType
             }
 
             switch(fieldType){
@@ -27,7 +26,7 @@
                 case "DATE":
                     field.label = "New Date Field";
                     break;
-                case "OPTIONS":
+                case "SELECT":
                     field.label = "New Dropdown";
                     field.options = [
                         {"label": "Option 1", "value": "OPTION_1"},
@@ -35,7 +34,7 @@
                         {"label": "Option 3", "value": "OPTION_3"}
                     ];
                     break;
-                case "CHECKBOXES":
+                case "CHECKBOX":
                     field.label = "New Checkboxes";
                     field.options = [
                         {"label": "Option A", "value": "OPTION_A"},
@@ -43,7 +42,7 @@
                         {"label": "Option C", "value": "OPTION_C"}
                     ];
                     break;
-                case "RADIOS":
+                case "RADIO":
                     field.label = "New Radio Buttons";
                     field.options = [
                         {"label": "Option X", "value": "OPTION_X"},
@@ -52,6 +51,7 @@
                     ];
                     break;
             }
+            console.log(field);
             FieldService.createFieldForForm(formId, field).then(function(res){
                 model.fields = res;
             });
