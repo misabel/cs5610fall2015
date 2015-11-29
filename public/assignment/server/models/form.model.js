@@ -97,9 +97,9 @@ module.exports = function(mongoose, db){
     function update(id, form){
 
         var deferred = q.defer();
-
-        FormModel.update({_id: id}, form, function(err, form){
-            deferred.resolve(form);
+        delete form._id;
+        FormModel.update({_id: id}, form, function(err, found){
+            deferred.resolve(found);
         });
         return deferred.promise;
         //for(var i = 0; i < forms.length; i++) {
@@ -251,6 +251,7 @@ module.exports = function(mongoose, db){
         FormModel.findById(formId, function(err, form){
             for(var i = 0; i < form.fields.length; i++){
                 if(form.fields[i]._id==fieldId){
+                    delete field._id;
                     form.fields[i] = field;
                     form.save(function(err, form){
                         deferred.resolve(form.fields);

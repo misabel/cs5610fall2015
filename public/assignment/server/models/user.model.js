@@ -67,10 +67,17 @@ module.exports = function(mongoose, db){
     function update(id, user){
 
         var deferred = q.defer();
-
-        UserModel.update({_id: id}, user, function(err, user){
-            deferred.resolve(user);
+        delete user._id;
+        UserModel.update({_id: id}, user, function(err, found){
+            deferred.resolve(found);
         });
+
+        //UserModel.findById(id, function(err, found){
+        //    found = user;
+        //    found.save(function(err, res){
+        //        deferred.resolve(user);
+        //    });
+        //});
 
         return deferred.promise;
         //for(var i = 0; i < users.length; i++) {
