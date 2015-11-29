@@ -38,12 +38,6 @@ module.exports = function(mongoose, db){
         });
 
         return deferred.promise;
-
-        //form.userId = userId;
-        //form.id = uuid.v4();
-        //form.fields = [];
-        //forms.push(form);
-        //return findFormByUserId(userId);
     }
 
     function findAll() {
@@ -54,7 +48,6 @@ module.exports = function(mongoose, db){
             deferred.resolve(forms);
         })
         return deferred.promise;
-        //return forms;
     }
 
     function findById(id) {
@@ -65,14 +58,6 @@ module.exports = function(mongoose, db){
             deferred.resolve(form);
         });
         return deferred.promise;
-        //for(var i = 0; i < forms.length; i++) {
-        //    var form = forms[i];
-        //    if(form.id == id){
-        //        return form;
-        //    }
-        //}
-        //
-        //return null;
     }
 
     function findFormByUserId(userId){
@@ -83,15 +68,6 @@ module.exports = function(mongoose, db){
             deferred.resolve(forms);
         });
         return deferred.promise;
-        //var found = [];
-        //for(var i = 0; i < forms.length; i++) {
-        //    var form = forms[i];
-        //    if(form.userId == userId){
-        //        found.push(form);
-        //    }
-        //}
-        //
-        //return found;
     }
 
     function update(id, form){
@@ -102,12 +78,6 @@ module.exports = function(mongoose, db){
             deferred.resolve(found);
         });
         return deferred.promise;
-        //for(var i = 0; i < forms.length; i++) {
-        //    if(forms[i].id == id) {
-        //        forms[i] = form;
-        //        return;
-        //    }
-        //}
     }
 
     function remove(id){
@@ -118,12 +88,6 @@ module.exports = function(mongoose, db){
             deferred.resolve();
         });
         return deferred.promise;
-        //for(var i = 0; i <  forms.length; i++){
-        //    if(forms[i].id == id){
-        //        forms.splice(i, 1);
-        //        return;
-        //    }
-        //}
     }
 
     function findFormByTitle(title){
@@ -134,13 +98,6 @@ module.exports = function(mongoose, db){
             deferred.resolve(form);
         });
         return deferred.promise;
-        //for(var i = 0; i < forms.length; i++){
-        //    var form = forms[i];
-        //    if(form.title == title){
-        //        return form;
-        //    }
-        //}
-        //return null;
     }
 
     function findFieldsByFormId(id){
@@ -152,14 +109,6 @@ module.exports = function(mongoose, db){
         });
 
         return deferred.promise;
-        //for(var i = 0; i < forms.length; i++) {
-        //    var form = forms[i];
-        //    if(form.id == id){
-        //        return form.fields;
-        //    }
-        //}
-        //
-        //return null;
     }
 
     function findFieldById(formId, fieldId){
@@ -181,18 +130,6 @@ module.exports = function(mongoose, db){
             return;
         });
         return deferred.promise;
-        //for(var j = 0; j < forms.length; j++) {
-        //    if(forms[j].id == formId){
-        //        for (var i = 0; i < forms[j].fields.length; i++) {
-        //            var field = forms[j].fields[i];
-        //            if (field.id == fieldId) {
-        //                return field;
-        //            }
-        //        }
-        //    }
-        //
-        //}
-        //return null;
     }
 
     function removeField(formId, fieldId){
@@ -211,17 +148,6 @@ module.exports = function(mongoose, db){
             }
         });
         return deferred.promise;
-        //for(var j = 0; j < forms.length; j++) {
-        //    if(forms[j].id == formId){
-        //        for (var i = 0; i < forms[j].fields.length; i++) {
-        //            if(forms[j].fields[i].id == fieldId){
-        //                forms[j].fields.splice(i, 1);
-        //                return forms[j].fields;
-        //            }
-        //        }
-        //    }
-        //
-        //}
     }
 
     function createField(formId, field){
@@ -235,13 +161,6 @@ module.exports = function(mongoose, db){
             });
         });
         return deferred.promise;
-        //field.id = uuid.v4();
-        //for(var i = 0; i < forms.length; i++){
-        //    if(forms[i].id == formId){
-        //        forms[i].fields.push(field);
-        //        return forms[i].fields;
-        //    }
-        //}
     }
 
     function updateField(formId, fieldId, field){
@@ -260,17 +179,6 @@ module.exports = function(mongoose, db){
             }
         });
         return deferred.promise;
-        //for(var j = 0; j < forms.length; j++) {
-        //    if(forms[j].id == formId){
-        //        for (var i = 0; i < forms[j].fields.length; i++) {
-        //            if(forms[j].fields[i].id == fieldId){
-        //                forms[j].fields[i] = field;
-        //                return forms[j].fields;
-        //            }
-        //        }
-        //    }
-        //
-        //}
     }
 
 

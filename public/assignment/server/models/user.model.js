@@ -31,9 +31,6 @@ module.exports = function(mongoose, db){
         });
 
         return deferred.promise;
-        //user.id = uuid.v4();
-        //users.push(user);
-        //return user;
     }
 
     function findAll() {
@@ -44,7 +41,6 @@ module.exports = function(mongoose, db){
         })
 
         return deferred.promise;
-        //return users;
     }
 
     function findById(id) {
@@ -54,14 +50,6 @@ module.exports = function(mongoose, db){
             deferred.resolve(user);
         });
         return deferred.promise;
-        //for(var i = 0; i < users.length; i++) {
-        //    var user = users[i];
-        //    if(user.id == id){
-        //        return user;
-        //    }
-        //}
-        //
-        //return null;
     }
 
     function update(id, user){
@@ -72,20 +60,7 @@ module.exports = function(mongoose, db){
             deferred.resolve(found);
         });
 
-        //UserModel.findById(id, function(err, found){
-        //    found = user;
-        //    found.save(function(err, res){
-        //        deferred.resolve(user);
-        //    });
-        //});
-
         return deferred.promise;
-        //for(var i = 0; i < users.length; i++) {
-        //    if(users[i].id == id) {
-        //        users[i] = user;
-        //        return users;
-        //    }
-        //}
     }
 
     function remove(id){
@@ -97,12 +72,6 @@ module.exports = function(mongoose, db){
         });
 
         return deferred.promise;
-        //for(var i = 0; i <  users.length; i++){
-        //    if(users[i].id == id){
-        //        users.splice(i, 1);
-        //        return users;
-        //    }
-        //}
     }
 
     function findUserByUsername(username){
@@ -113,14 +82,6 @@ module.exports = function(mongoose, db){
         });
 
         return deferred.promise;
-
-        //for(var i = 0; i < users.length; i++){
-        //    var user = users[i];
-        //    if(user.username == username){
-        //        return user;
-        //    }
-        //}
-        //return null;
     }
 
     function findUserByCredentials(credentials){
@@ -132,12 +93,5 @@ module.exports = function(mongoose, db){
         });
 
         return deferred.promise;
-        //for(var i = 0; i < users.length; i++){
-        //    var user = users[i];
-        //    if(user.username == credentials.username && user.password == credentials.password){
-        //        return user;
-        //    }
-        //}
-        //return null;
     }
 }
